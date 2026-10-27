@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "Klippo Integration",
+  "version": "1.7.6",
+  "description": "Sends browser downloads and the videos you watch (YouTube too) to the Klippo download manager.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyyyxCgbFSnodtNcR9GGJZpvvX4SUp8El1lWjGuQzYQ0kukJ6A9erWtfMn+QLlGO0K7fAr1xCN/FKZ7V4ZYgOdiVKLgxUttyriEB9NE/S5ywrWGnNij2apRqo8e1ffUdWdtMCRBBlKIZ9WmQGap4OkcpnkNs7chN24E9q4S3dBUeg+eA77xhIRmlIItFrFYM8TtO35tR+GfndPGQHs31/srBIq3whvJsx1Abj/t9yzvG+RD6NRmohu3dAaqwAxXDclGbg2/uRNAG3puRIP3mlv/ytKCQje0nkuZ1EK20Z8yv2r1cc07IYQc2YEx+oe/56G/fsZtxeYWBJe93FxLamDQIDAQAB",
+  "permissions": [
+    "downloads",
+    "nativeMessaging",
+    "cookies",
+    "contextMenus",
+    "storage",
+    "webRequest",
+    "proxy"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*",
+        "https://music.youtube.com/*",
+        "https://www.youtube-nocookie.com/*"
+      ],
+      "js": [
+        "youtube_main.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle",
+      "world": "MAIN"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Klippo: downloads and videos on this page",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  }
+}

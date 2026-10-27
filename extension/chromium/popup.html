@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Klippo</title>
+<style>
+  :root { color-scheme: light dark; --fg: #1d2733; --muted: #5d6b7c; --line: #dfe5ec; --bg: #ffffff; --row: #f4f7fb; --accent: #2e7d32; --err: #b3261e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg: #e6ebf1; --muted: #9aa7b6; --line: #333c47; --bg: #1c2128; --row: #252c35; --accent: #57b85c; --err: #f2867d; }
+  }
+  body { margin: 0; width: 360px; font: 13px "Segoe UI", system-ui, sans-serif; color: var(--fg); background: var(--bg); }
+  header { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  header img { width: 20px; height: 20px; }
+  header strong { font-size: 14px; flex: 1; }
+  #host { font-size: 11px; color: var(--muted); }
+  #host.ok { color: var(--accent); }
+  #host.err { color: var(--err); }
+  label.switch { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 1px solid var(--line); cursor: pointer; }
+  h2 { margin: 10px 12px 6px; font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  ul { list-style: none; margin: 0; padding: 0 8px 8px; max-height: 340px; overflow: auto; }
+  li { display: flex; align-items: center; gap: 8px; padding: 6px 8px; margin-bottom: 4px; border-radius: 4px; background: var(--row); }
+  li .text { flex: 1; min-width: 0; }
+  li .main { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  li .sub { display: block; font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  li .note { display: block; font-size: 11px; color: var(--err); }
+  button { font: inherit; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+  button:disabled { opacity: .5; cursor: default; }
+  .empty, .hint { margin: 0 12px 10px; color: var(--muted); font-size: 12px; }
+  .hint code { font-size: 11px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="icons/icon32.png" alt="">
+  <strong>Klippo</strong>
+  <span id="host">Connecting…</span>
+</header>
+<label class="switch"><input type="checkbox" id="enabled"> Capture downloads from this browser</label>
+<label class="switch"><input type="checkbox" id="showMedia"> Show video and audio found on this page</label>
+<h2 id="mediaHead" hidden>Video and audio on this page</h2>
+<ul id="list" hidden></ul>
+<p class="empty" id="empty" hidden>No video or audio found yet. Start playing the video, then open this list again.</p>
+<p class="hint" id="hint" hidden>Klippo is not reachable. Run <code>klippo.exe install-host</code>, then reload this extension.</p>
+<script src="popup.js"></script>
+</body>
+</html>

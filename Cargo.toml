@@ -1,0 +1,66 @@
+[package]
+name = "klippo"
+version = "1.8.0"
+edition = "2021"
+authors = ["Klippo Team"]
+description = "High-performance multi-connection download accelerator in Rust"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "stream", "json", "socks"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+futures-util = "0.3"
+indicatif = "0.17"
+clap = { version = "4.5", features = ["derive"] }
+url = "2.5"
+percent-encoding = "2.3"
+sha2 = "0.10"
+sha1 = "0.10"
+md-5 = "0.10"
+crc32fast = "1"
+crossterm = "0.28"
+eframe = "0.30"
+egui_extras = { version = "0.30", features = ["all_loaders"] }
+image = { version = "0.25", default-features = false, features = ["png", "bmp", "jpeg"] }
+open = "5"
+rfd = "0.15"
+chrono = { version = "0.4", features = ["serde"] }
+arboard = "3.4"
+raw-window-handle = "0.6"
+base64 = "0.22"
+aes = "0.8"
+cbc = { version = "0.1", features = ["alloc"] }
+suppaftp = "12"
+socks = "0.3"
+
+[target.'cfg(windows)'.dependencies]
+tray-icon = "=0.25.1"
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_System_Console",
+    "Win32_Media_Audio",
+    "Win32_System_Registry",
+    "Win32_Networking_WinHttp",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_UI_Shell",
+    "Win32_Graphics_Dwm",
+    "Win32_Graphics_Gdi",
+    "Win32_System_Threading",
+    "Win32_System_Com",
+    "Win32_System_Ole",
+    "Win32_System_DataExchange",
+    "Win32_System_Memory",
+    "Win32_NetworkManagement_Rras",
+] }
+
+[dev-dependencies]
+tempfile = "3"
+
+[patch.crates-io]
+# eframe 0.30.0 with one change (vendor/eframe/KLIPPO-PATCH.md): dialog windows
+# get an AccessKit tree, so screen readers and UI Automation see their controls.
+eframe = { path = "vendor/eframe" }
+# egui 0.30.0 with two accessibility changes (vendor/egui/KLIPPO-PATCH.md): a
+# click opens a submenu, and text boxes accept "set value".
+egui = { path = "vendor/egui" }
