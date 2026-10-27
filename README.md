@@ -6,6 +6,25 @@ a speed limiter and command-line switches.
 
 Klippo is an independent, free project.
 
+![Klippo main window](docs/images/klippo-main.png)
+
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center"><b>Download File Info</b><br><img src="docs/images/klippo-download-info.png" width="420" alt="Download File Info dialog with size detection"></td>
+    <td align="center"><b>Download progress</b><br><img src="docs/images/klippo-progress.png" width="420" alt="Per-connection download progress"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Options</b><br><img src="docs/images/klippo-options.png" width="420" alt="Options dialog"></td>
+    <td align="center"><b>Scheduler and queues</b><br><img src="docs/images/klippo-scheduler.png" width="420" alt="Scheduler and queues"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>File properties and checksum</b><br><img src="docs/images/klippo-properties.png" width="420" alt="File properties with checksum verify"></td>
+    <td align="center"><b>Site Grabber</b><br><img src="docs/images/klippo-sitegrabber.png" width="420" alt="Site Grabber"></td>
+  </tr>
+</table>
+
 ---
 
 ## Features
