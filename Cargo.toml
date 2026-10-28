@@ -64,3 +64,6 @@ eframe = { path = "vendor/eframe" }
 # egui 0.30.0 with two accessibility changes (vendor/egui/KLIPPO-PATCH.md): a
 # click opens a submenu, and text boxes accept "set value".
 egui = { path = "vendor/egui" }
+
+[profile.release]
+strip = true
